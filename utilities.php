@@ -1,10 +1,11 @@
 <?php
+include('env.php');
 
 function connect_to_db()
 {
-  $dbn = 'mysql:dbname=twitter_clone;charset=utf8;port=3306;host=localhost';
-  $user = 'root';
-  $pwd = '';
+  $dbn = dbn();
+  $user = user();
+  $pwd = pwd();
 
   try {
     return new PDO($dbn, $user, $pwd);
