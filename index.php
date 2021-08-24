@@ -44,7 +44,7 @@ if ($status == false) {
 
 <body>
   <fieldset>
-    <legend>twitter clone（Like画面）<?= !$username ? '' : "Hi, {$username}" ?></legend>
+    <legend>twitter clone（一覧画面）<?= !$username ? '' : "Hi, {$username}" ?></legend>
     <?= !$user_id ? "<a href=\"./login.php\">login</a>" : "<a href=\"./create.php\">入力画面</a> <a href=\"./likes.php\">Like画面</a> <a href=\"./logout.php\">logout</a>" ?>
     <table>
       <thead>

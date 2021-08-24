@@ -49,7 +49,10 @@ if ($status == false) {
     <table>
       <thead>
         <tr>
+          <th>datetime</th>
+          <th>user</th>
           <th>tweet</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>
