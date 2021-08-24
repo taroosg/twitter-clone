@@ -21,7 +21,7 @@
         <button>Login</button>
       </div>
       <a href="./register.php">or register</a>
-      <a href="../tweet/index.php">一覧画面</a>
+      <a href="./index.php">一覧画面</a>
     </fieldset>
   </form>
 </body>

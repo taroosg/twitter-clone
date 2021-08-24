@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../utilities.php");
+include("./utilities.php");
 
 $pdo = connect_to_db();
 
@@ -32,6 +32,6 @@ if (!$val) {
   $_SESSION["is_admin"] = $val["is_admin"];
   $_SESSION["username"] = $val["username"];
   $_SESSION["user_id"] = $val["user_id"];
-  header("Location:../tweet/index.php");
+  header("Location:./index.php");
   exit();
 }

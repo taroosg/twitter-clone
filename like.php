@@ -1,6 +1,6 @@
 <?php
 
-include('../utilities.php');
+include('./utilities.php');
 
 $user_id = $_GET['user_id'];
 $tweet_id = $_GET['tweet_id'];
@@ -20,14 +20,11 @@ if ($status == false) {
   exit();
 } else {
   $like_count = $stmt->fetchColumn();
-  // exit();
 }
 
 if ($like_count != 0) {
-  // いいねされている状態
   $sql = 'DELETE FROM likes WHERE user_id=:user_id AND tweet_id=:tweet_id';
 } else {
-  // いいねされていない状態
   $sql = 'INSERT INTO likes (user_id, tweet_id, created_at) VALUES (:user_id, :tweet_id, now())';
 }
 

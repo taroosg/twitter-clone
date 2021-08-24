@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../utilities.php");
+include("./utilities.php");
 check_session_id();
 
 $tweet_id = $_GET["tweet_id"];

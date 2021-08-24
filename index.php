@@ -1,13 +1,13 @@
 <?php
 session_start();
-include("../utilities.php");
+include("./utilities.php");
 
 $user_id = $_SESSION['user_id'] ?? null;
 $username = $_SESSION['username'] ?? null;
 
 $pdo = connect_to_db();
 
-$sql = 'SELECT tweet_id, tweet, created_at, updated_at, cnt, user_id, username FROM (SELECT tweet_id, tweet, user_id AS u_id, created_at, updated_at, cnt FROM tweets INNER JOIN (SELECT tweet_id AS id, COUNT(tweet_id) AS cnt FROM likes GROUP BY tweet_id) AS result_table ON tweets.tweet_id = result_table.id) AS tweet_table INNER JOIN (SELECT user_id, username FROM users) AS users ON tweet_table.u_id = users.user_id ORDER BY created_at DESC';
+$sql = 'SELECT tweet_id, tweet, created_at, updated_at, cnt, user_id, username FROM (SELECT tweet_id, tweet, user_id AS u_id, created_at, updated_at, cnt FROM tweets LEFT OUTER JOIN (SELECT tweet_id AS id, COUNT(tweet_id) AS cnt FROM likes GROUP BY tweet_id) AS result_table ON tweets.tweet_id = result_table.id) AS tweet_table INNER JOIN (SELECT user_id, username FROM users) AS users ON tweet_table.u_id = users.user_id ORDER BY created_at DESC';
 
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
@@ -45,11 +45,14 @@ if ($status == false) {
 <body>
   <fieldset>
     <legend>twitter clone（Like画面）<?= !$username ? '' : "Hi, {$username}" ?></legend>
-    <?= !$user_id ? "<a href=\"../users/login.php\">login</a>" : "<a href=\"./create.php\">入力画面</a> <a href=\"./index.php\">一覧画面</a> <a href=\"../users/logout.php\">logout</a>" ?>
+    <?= !$user_id ? "<a href=\"./login.php\">login</a>" : "<a href=\"./create.php\">入力画面</a> <a href=\"./likes.php\">Like画面</a> <a href=\"./logout.php\">logout</a>" ?>
     <table>
       <thead>
         <tr>
+          <th>datetime</th>
+          <th>user</th>
           <th>tweet</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>

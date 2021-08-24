@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../utilities.php");
+include("./utilities.php");
 check_session_id();
 ?>
 
@@ -18,7 +18,7 @@ check_session_id();
     <fieldset>
       <legend>twitter clone（入力画面）<?= !$_SESSION['username'] ? '' : "Hi, {$_SESSION['username']}" ?></legend>
       <a href="./index.php">一覧画面</a>
-      <a href="../users/logout.php">logout</a>
+      <a href="./logout.php">logout</a>
       <div>
         tweet: <input type="text" name="tweet">
       </div>
