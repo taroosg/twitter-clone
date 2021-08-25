@@ -5,6 +5,7 @@ include("./utilities.php");
 check_session_id();
 
 $tweet_id = $_GET["tweet_id"];
+$source = $_GET["source"];
 
 $pdo = connect_to_db();
 
@@ -38,6 +39,7 @@ if ($status == false) {
     <fieldset>
       <legend>twitter clone（編集画面）</legend>
       <a href="./index.php">一覧画面</a>
+      <p>編集画面では，ユーザが自分の tweet を編集できます．送信すると DB のデータが更新されます．</p>
       <div>
         tweet: <input type="text" name="tweet" value="<?= $record["tweet"] ?>">
       </div>
@@ -45,6 +47,7 @@ if ($status == false) {
         <button>submit</button>
       </div>
       <input type="hidden" name="tweet_id" value="<?= $record["tweet_id"] ?>">
+      <input type="hidden" name="source" value="<?= $source ?>">
     </fieldset>
   </form>
 

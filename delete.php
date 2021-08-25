@@ -4,6 +4,7 @@ include("./utilities.php");
 check_session_id();
 
 $tweet_id = $_GET["tweet_id"];
+$source = $_GET["source"];
 
 $pdo = connect_to_db();
 
@@ -18,6 +19,6 @@ if ($status == false) {
   echo json_encode(["error_msg" => "{$error[2]}"]);
   exit();
 } else {
-  header("Location:./index.php");
+  header($source == 0 ? "Location:./index.php" : "Location:./likes.php");
   exit();
 }

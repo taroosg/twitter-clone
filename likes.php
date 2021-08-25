@@ -25,8 +25,8 @@ if ($status == false) {
       !$user_id
         ? "<tr><td>{$x["created_at"]}</td><td>{$x["username"]}</td><td>{$x["tweet"]}</td><td>like{$x['cnt']}</td>"
         : ($user_id !== $x["user_id"]
-          ? "<tr><td>{$x["created_at"]}</td><td>{$x["username"]}</td><td>{$x["tweet"]}</td><td><a href='./like.php?user_id={$user_id}&tweet_id={$x["tweet_id"]}&source=0'>like{$x['cnt']}</a></td>"
-          : "<tr><td>{$x["created_at"]}</td><td>{$x["username"]}</td><td>{$x["tweet"]}</td><td><a href='./like.php?user_id={$user_id}&tweet_id={$x["tweet_id"]}&source=0'>like{$x['cnt']}</a></td><td><a href='./edit.php?tweet_id={$x["tweet_id"]}'>edit</a></td><td><a href='./delete.php?tweet_id={$x["tweet_id"]}'>delete</a></td></tr>"),
+          ? "<tr><td>{$x["created_at"]}</td><td>{$x["username"]}</td><td>{$x["tweet"]}</td><td><a href='./like.php?user_id={$user_id}&tweet_id={$x["tweet_id"]}&source=1'>like{$x['cnt']}</a></td>"
+          : "<tr><td>{$x["created_at"]}</td><td>{$x["username"]}</td><td>{$x["tweet"]}</td><td><a href='./like.php?user_id={$user_id}&tweet_id={$x["tweet_id"]}&source=1'>like{$x['cnt']}</a></td><td><a href='./edit.php?tweet_id={$x["tweet_id"]}&source=1'>edit</a></td><td><a href='./delete.php?tweet_id={$x["tweet_id"]}&source=1'>delete</a></td></tr>"),
       $result,
     )
   );
@@ -46,6 +46,7 @@ if ($status == false) {
   <fieldset>
     <legend>twitter clone（Like画面）<?= !$username ? '' : "Hi, {$username}" ?></legend>
     <?= !$user_id ? "<a href=\"./login.php\">login</a>" : "<a href=\"./create.php\">入力画面</a> <a href=\"./index.php\">一覧画面</a> <a href=\"./logout.php\">logout</a>" ?>
+    <p>Like画面には，ログイン中のユーザが Like した tweet が新しい順に表示されます．</p>
     <table>
       <thead>
         <tr>

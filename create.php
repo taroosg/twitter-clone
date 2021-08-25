@@ -19,6 +19,7 @@ check_session_id();
       <legend>twitter clone（入力画面）<?= !$_SESSION['username'] ? '' : "Hi, {$_SESSION['username']}" ?></legend>
       <a href="./index.php">一覧画面</a>
       <a href="./logout.php">logout</a>
+      <p>tweet 作成画面では，ユーザが tweet する内容を入力して送信します．</p>
       <div>
         tweet: <input type="text" name="tweet">
       </div>
